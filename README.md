@@ -400,8 +400,8 @@ The demo video showcases:
 
 ## 👥 Author & Contributors
 
-- **Arokiya Nithish J** - *Project Lead & Developer*
-- **shwarya M** - *Project Design and Analysis*
+- **[Arokiya Nithish J](https://github.com/ArokiyaNithish)** - *Project Lead & Developer*
+- **[Ishwarya M](https://github.com/ishwarya-hub)** - *Project Design Analysis & Developer *
 
 ---
 
