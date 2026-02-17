@@ -169,7 +169,7 @@ This system significantly reduces:
 
 ### Circuit Diagram
 
-![Circuit Diagram](1.png)
+![Circuit Diagram](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/1.png)
 
 The circuit diagram above shows the complete wiring connections between the Arduino UNO, MFRC522 RFID reader module, and the 16x2 I2C LCD display.
 
@@ -361,7 +361,7 @@ bool productScanned[4] = {false, false, false, false};
 
 ### Working Prototype
 
-![Prototype Image](Working%20Prototype%20of%20Smart%20Shopping%20Trolley%20System.jpg)
+![Prototype Image](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/2.jpg)
 
 The image shows the complete hardware setup with:
 - Arduino UNO microcontroller
@@ -372,7 +372,7 @@ The image shows the complete hardware setup with:
 
 ### Video Demonstration
 
-📹 **[Demo Video](Demo%20Video%20of%20Smart%20Shopping%20Trolley%20with%20Billing%20System.mp4)**
+📹 **[Demo Video](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/3.mp4)**
 
 The demo video showcases:
 - Real-time product scanning
