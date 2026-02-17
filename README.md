@@ -372,7 +372,7 @@ The image shows the complete hardware setup with:
 
 ### Video Demonstration
 
-📹 **[Demo Video](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/3.mp4)**
+**![Demo Video](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/3.gif)**
 
 The demo video showcases:
 - Real-time product scanning
