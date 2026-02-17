@@ -398,9 +398,10 @@ The demo video showcases:
 
 ---
 
-## 👥 Contributors
+## 👥 Author & Contributors
 
-- **Your Name** - *Project Lead & Developer*
+- **Arokiya Nithish J** - *Project Lead & Developer*
+- **shwarya M** - *Project Design and Analysis*
 
 ---
 
@@ -409,7 +410,6 @@ The demo video showcases:
 This project is open-source and available under the [MIT License](LICENSE).
 
 ---
-## AUTHOR
 ## 📞 Contact & Support
 
 For questions, suggestions, or collaboration:
