@@ -1,6 +1,7 @@
 # 🛒 Smart Shopping Trolley with Billing System
 
 An innovative **RFID-based automated billing system** for shopping trolleys using **Arduino UNO**. This project eliminates the need for manual billing at checkout counters by automatically calculating the total bill as customers add products to their trolley.
+- [View the Abstact of the Project](https://drive.google.com/file/d/1d13-uF_HThPdEDDTJzl6HAk1klQFzOW5/view?usp=sharing)
 
 
 
@@ -435,7 +436,8 @@ For questions, suggestions, or collaboration:
 - [Arduino Official Documentation](https://www.arduino.cc/reference/en/)
 - [MFRC522 Library GitHub](https://github.com/miguelbalboa/rfid)
 - [I2C LCD Documentation](https://www.arduino.cc/en/Reference/LiquidCrystal)
-
+- [Complete Report Document](https://drive.google.com/file/d/1KNty5-GZXkUufx2Xm-4T0okQmDgQPWm6/view?usp=sharing)
+- [Idea Presentation](https://drive.google.com/file/d/1dKxhBsqePgdzTozG-Ih7ikeN6Tw-Afaf/view?usp=sharing)
 ---
 
 <div align="center">
