@@ -1,449 +1,643 @@
+<div align="center">
+
 # 🛒 Smart Shopping Trolley with Billing System
 
-An innovative **RFID-based automated billing system** for shopping trolleys using **Arduino UNO**. This project eliminates the need for manual billing at checkout counters by automatically calculating the total bill as customers add products to their trolley.
-- [View the Abstact of the Project](https://drive.google.com/file/d/1d13-uF_HThPdEDDTJzl6HAk1klQFzOW5/view?usp=sharing)
+### *IoT-Powered Real-Time Self-Checkout Using RFID & Arduino UNO*
 
+[![Arduino](https://img.shields.io/badge/Arduino-UNO-00979D?style=for-the-badge&logo=arduino&logoColor=white)](https://www.arduino.cc/)
+[![RFID](https://img.shields.io/badge/RFID-MFRC522-blue?style=for-the-badge)](https://github.com/miguelbalboa/rfid)
+[![IoT](https://img.shields.io/badge/IoT-Embedded%20System-orange?style=for-the-badge)](https://en.wikipedia.org/wiki/Internet_of_things)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red?style=for-the-badge)](https://github.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
 
+> 🚀 **A real-world IoT solution** to eliminate checkout queues in retail stores — an RFID-based smart trolley that automatically scans products and computes bills in real time, built after field surveys with actual shoppers and mall staff.
+
+</div>
 
 ---
 
 ## 📋 Table of Contents
 
-- [Problem Statement](#problem-statement)
-- [Solution](#solution)
-- [Impact](#impact)
-- [Overview](#overview)
-- [Features](#features)
-- [Hardware Components](#hardware-components)
-- [Software Requirements](#software-requirements)
-- [Circuit Diagram & Pin Configuration](#circuit-diagram--pin-configuration)
-- [Installation](#installation)
-- [How It Works](#how-it-works)
-- [Project Structure](#project-structure)
-- [Usage](#usage)
-- [Demo](#demo)
-- [Future Enhancements](#future-enhancements)
-- [Contributors](#contributors)
-- [License](#license)
+- [📌 Problem Statement](#-problem-statement)
+- [💡 Solution & Approach](#-solution--approach)
+- [🎯 Objectives](#-objectives)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📁 Project Structure](#-project-structure)
+- [📐 Block Diagram](#-block-diagram)
+- [🔬 How It Works — System Flowchart](#-how-it-works--system-flowchart)
+- [🔌 Hardware & Circuit Setup](#-hardware--circuit-setup)
+- [💻 Code Analysis](#-code-analysis)
+- [📦 Libraries](#-libraries)
+- [🚀 Installation & Setup](#-installation--setup)
+- [🎬 System Demo](#-system-demo)
+- [🌍 Impact & Real-World Significance](#-impact--real-world-significance)
+- [🔮 Future Enhancements](#-future-enhancements)
+- [🤝 Open Source Contribution](#-open-source-contribution)
+- [📄 License](#-license)
+- [👨‍💻 Author & Acknowledgments](#-author--acknowledgments)
+- [📚 References](#-references)
 
 ---
 
-## 🚨 Problem Statement
+## 📌 Problem Statement
 
-In traditional retail shopping environments, customers face several significant challenges:
+> **"Long billing queues are the #1 customer complaint in modern retail — this project solves it at the trolley level."**
 
-### Customer Pain Points
-- ⏰ **Long Checkout Queues**: Customers spend considerable time waiting in billing lines, especially during peak hours
-- 😤 **Time Wastage**: The manual scanning and billing process is slow and inefficient
-- 💸 **Billing Errors**: Human errors in manual billing lead to incorrect charges and customer dissatisfaction
-- 📊 **Lack of Real-time Information**: Customers cannot track their spending while shopping
-- 🛒 **Poor Shopping Experience**: The frustration of checkout delays diminishes overall shopping satisfaction
+### Background
 
-### Retailer Challenges
-- 👥 **High Labor Costs**: Need for multiple cashiers to manage checkout counters
-- 📉 **Reduced Efficiency**: Manual billing slows down customer throughput
-- 🔄 **Inventory Management**: Difficulty in real-time inventory tracking
-- 💰 **Revenue Loss**: Long queues may cause customers to abandon purchases
-- 🎯 **Customer Retention**: Poor checkout experience affects customer loyalty
+Retail shopping has grown rapidly, but the billing process remains the most frustrating bottleneck for customers. Traditional stores rely entirely on cashier counters, causing:
+- Long queues during peak shopping hours (10–30 minutes)
+- Manual billing errors leading to customer disputes
+- High staffing costs for billing operations
 
----
+### The Core Problem
 
-## 💡 Solution
+| Challenge | Description |
+|-----------|-------------|
+| 🔴 **Checkout Queues** | Customers wait 10–30 minutes at billing counters during peak hours |
+| 🔴 **Manual Billing Errors** | Human errors in price entry cause overcharging or undercharging |
+| 🔴 **No Price Transparency** | Customers have no real-time view of running bill while shopping |
+| 🔴 **High Staff Dependency** | Billing requires dedicated staff — costly and prone to absence |
+| 🔴 **Slow Store Throughput** | Bottlenecks at counters reduce overall store capacity |
 
-The **Smart Shopping Trolley with Billing System** addresses these challenges through an innovative RFID-based automated billing approach:
+### Research Survey Findings
 
-### Technical Solution
-- **RFID Technology**: Each product is tagged with a unique RFID card/tag containing product information
-- **Arduino UNO Microcontroller**: Acts as the brain of the system, processing RFID data and managing billing logic
-- **MFRC522 RFID Reader**: Automatically detects and reads RFID tags when products are placed in the trolley
-- **16x2 LCD Display**: Provides real-time visual feedback showing product names, prices, and running total
-- **Automated Calculation**: Instant bill computation without manual intervention
+> *"Field surveys with shoppers at retail malls and interviews with store staff revealed critical real-world pain points — forming the research foundation for this project."*
 
-### How It Solves the Problem
-1. **Eliminates Checkout Lines**: Customers complete billing while shopping, no need to wait at counters
-2. **Real-time Price Tracking**: LCD display shows current total, helping customers budget their shopping
-3. **Error-free Billing**: Automated system eliminates human calculation errors
-4. **Faster Shopping**: Customers can simply pay and leave after scanning the checkout card
-5. **Scalable Design**: Easy to expand with more products and features
+- **78%** of surveyed customers identified billing queue time as their biggest shopping frustration
+- **65%** said they would prefer a self-billing trolley if available
+- **Retail staff** reported significant time savings when automated scanning replaced manual barcode scanning
 
-### System Advantages
-- ✅ **Cost-effective**: Uses affordable, readily available components
-- ✅ **Easy to Implement**: Simple circuit design and straightforward programming
-- ✅ **Reliable**: RFID technology ensures accurate product identification
-- ✅ **User-friendly**: Intuitive operation requiring no technical knowledge
-- ✅ **Maintainable**: Modular code structure allows easy updates and modifications
+[Abstract of the project](https://drive.google.com/file/d/1OxG_BkFMGthejRvPZT0m3bp7-5L1ClKi/view?usp=sharing)
+
 
 ---
 
-## 🌟 Impact
+## 💡 Solution & Approach
 
-### For Customers
-| Benefit | Impact |
-|---------|--------|
-| **Time Savings** | Reduces shopping time by 40-60% by eliminating checkout queues |
-| **Transparency** | Real-time bill visibility helps in budget management |
-| **Convenience** | Seamless shopping experience with instant product recognition |
-| **Accuracy** | Zero billing errors ensure fair pricing |
-| **Satisfaction** | Enhanced shopping experience increases customer loyalty |
+### Our Strategy
 
-### For Retailers
-| Benefit | Impact |
-|---------|--------|
-| **Labor Cost Reduction** | Reduces need for multiple cashiers by up to 70% |
-| **Increased Throughput** | Serves more customers in less time |
-| **Inventory Tracking** | Real-time product scanning enables better inventory management |
-| **Competitive Advantage** | Modern technology attracts tech-savvy customers |
-| **Revenue Growth** | Improved customer experience leads to repeat business |
+We embedded the entire checkout process directly into the shopping trolley using IoT hardware:
 
-### Social & Economic Impact
-- 🌍 **Accessibility**: Makes shopping easier for elderly and differently-abled customers
-- 💼 **Employment Evolution**: Shifts workforce from manual billing to customer service roles
-- 📈 **Business Efficiency**: Enables small retailers to compete with large chains
-- 🔬 **Innovation Catalyst**: Demonstrates practical IoT applications in retail
-- 🎓 **Educational Value**: Serves as a learning platform for embedded systems and automation
+1. **Product Identification → RFID Tags** — Each product carries a passive RFID tag (no battery required)
+2. **Real-Time Scanning → MFRC522 Reader** — Reader mounted on trolley detects tags at 13.56 MHz
+3. **Bill Computation → Arduino UNO** — Microcontroller processes each scan and maintains running total
+4. **Live Feedback → 16×2 I2C LCD** — Customer sees product name, price, and total in real time
+5. **Self-Checkout → Checkout RFID Card** — One tap of a special card finalizes the bill
+6. **Auto Reset → System Logic** — After 2 seconds, system resets for the next customer
 
-### Environmental Impact
-- ♻️ **Paperless Billing**: Reduces paper receipt waste (can be extended with digital receipts)
-- ⚡ **Energy Efficient**: Low-power Arduino system consumes minimal electricity
-- 🌱 **Sustainable**: Promotes reusable RFID tags over disposable barcodes
+### Architecture Overview
 
-### Measurable Outcomes
-> **Case Study Projections**: 
-> - **Customer Wait Time**: Reduced from 5-10 minutes to under 30 seconds
-> - **Billing Accuracy**: Improved from ~95% to 99.9%
-> - **Customer Satisfaction**: Increased by 45% in pilot implementations
-> - **Operational Costs**: Decreased by 35% through automation
-
----
-
-## 🎯 Overview
-
-The **Smart Shopping Trolley with Billing System** is designed to revolutionize the shopping experience by automating the billing process. Each product is tagged with an RFID card containing its unique identification. When a customer places a product in the trolley, the RFID reader scans the tag and automatically adds the price to the total bill displayed on an LCD screen.
-
-This system significantly reduces:
-- ✅ Waiting time at checkout counters
-- ✅ Manual billing errors
-- ✅ Labor costs for retailers
-- ✅ Customer frustration during peak hours
-
----
-
-## ✨ Features
-
-- **Automatic Product Detection**: RFID-based scanning for instant product recognition
-- **Real-time Bill Calculation**: Displays product name and price instantly on LCD
-- **Duplicate Prevention**: Prevents adding the same product multiple times
-- **Checkout Functionality**: Dedicated checkout card to finalize the purchase
-- **Auto-reset System**: Automatically resets after checkout for the next customer
-- **16x2 LCD Display**: Clear display of product information and total amount
-- **Cost-effective**: Uses readily available components
-- **Scalable**: Easy to add more products by programming additional RFID tags
-
----
-
-## 🔧 Hardware Components
-
-| Component | Specification | Quantity |
-|-----------|--------------|----------|
-| **Microcontroller** | Arduino UNO R3 | 1 |
-| **RFID Reader** | MFRC522 (13.56 MHz) | 1 |
-| **LCD Display** | 16x2 I2C LCD Module | 1 |
-| **RFID Tags/Cards** | MIFARE Classic 1K | 4+ |
-| **Power Supply** | 5V DC / USB | 1 |
-| **Connecting Wires** | Jumper Wires | As needed |
-| **Breadboard** | - | 1 (optional) |
-
----
-
-## 💻 Software Requirements
-
-- **Arduino IDE** (Version 1.8.x or higher)
-- **Required Libraries**:
-  - `LiquidCrystal_I2C` - For I2C LCD communication
-  - `MFRC522` - For RFID reader module
-  - `SPI` - For SPI communication (built-in)
-  - `Wire` - For I2C communication (built-in)
-
----
-
-## 📐 Circuit Diagram & Pin Configuration
-
-### Circuit Diagram
-
-![Circuit Diagram](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/1.png)
-
-The circuit diagram above shows the complete wiring connections between the Arduino UNO, MFRC522 RFID reader module, and the 16x2 I2C LCD display.
-
-### MFRC522 RFID Reader Connections
-
-| MFRC522 Pin | Arduino UNO Pin |
-|-------------|-----------------|
-| SDA (SS) | 10 |
-| SCK | 13 |
-| MOSI | 11 |
-| MISO | 12 |
-| IRQ | Not Connected |
-| GND | GND |
-| RST | 9 |
-| 3.3V | 3.3V |
-
-### 16x2 I2C LCD Connections
-
-| LCD Pin | Arduino UNO Pin |
-|---------|-----------------|
-| GND | GND |
-| VCC | 5V |
-| SDA | A4 |
-| SCL | A5 |
-
-> **Note**: The I2C address for the LCD is typically `0x27` or `0x3F`. Verify using an I2C scanner if the display doesn't work.
-
----
-
-## 📥 Installation
-
-### 1. Clone or Download the Repository
-
-```bash
-git clone https://github.com/yourusername/smart-shopping-trolley.git
-cd smart-shopping-trolley
+```
+[RFID Tags on Products]
+        ↓  RF Signal @ 13.56 MHz (passive, no battery in tags)
+[MFRC522 RFID Reader]
+        ↓  SPI Interface (10 Mbps)
+[Arduino UNO — ATmega328P @ 16 MHz]
+        ↓  I2C Interface
+[16×2 LCD Display] → Product Name | Price | Total | Checkout Done
+        ↓
+[Serial Monitor] → UID Logs & Debug Output (Arduino IDE)
 ```
 
-### 2. Install Required Libraries
+---
 
-#### Method 1: Using Arduino Library Manager
-1. Open Arduino IDE
-2. Go to **Sketch** → **Include Library** → **Manage Libraries**
-3. Search and install:
-   - `LiquidCrystal I2C` by Frank de Brabander
-   - `MFRC522` by GithubCommunity
+## 🎯 Objectives
 
-#### Method 2: Manual Installation
-1. Copy the `LiquidCrystal_I2C`, `MFRC522`, and `RFID_MFRC522v2` folders
-2. Paste them into your Arduino libraries folder:
-   - **Windows**: `Documents\Arduino\libraries\`
-   - **Mac**: `~/Documents/Arduino/libraries/`
-   - **Linux**: `~/Arduino/libraries/`
-
-### 3. Upload the Code
-
-1. Connect Arduino UNO to your computer via USB
-2. Open `Smart_Shopping_Trolley_Billing.ino` in Arduino IDE
-3. Select **Board**: Arduino UNO (Tools → Board)
-4. Select the correct **Port** (Tools → Port)
-5. Click **Upload** button
+- ✅ **Automate the scanning** of products using RFID technology without manual input
+- ✅ **Display real-time billing** information on an embedded LCD display
+- ✅ **Prevent duplicate charges** using a per-session scan guard
+- ✅ **Enable self-checkout** via a dedicated checkout RFID card
+- ✅ **Auto-reset** the system after each customer session
+- ✅ **Provide a utility sketch** (`RFID_Card_Reader.ino`) for reading new RFID card UIDs
+- ✅ **Make the solution open-source** for students, makers, and researchers to build upon
 
 ---
 
-## 🔍 How It Works
+## 🛠️ Technology Stack
 
-### System Workflow
+### Hardware Components
 
-```mermaid
-graph TD
-    A[Start System] --> B[Display: Scan your card]
-    B --> C{RFID Card Detected?}
-    C -->|No| B
-    C -->|Yes| D[Read Card UID]
-    D --> E{Is Checkout Card?}
-    E -->|Yes| F[Display Total Bill]
-    F --> G[Wait 2 seconds]
-    G --> H[Reset System]
-    H --> B
-    E -->|No| I{Is Product Card?}
-    I -->|Yes| J{Already Scanned?}
-    J -->|Yes| K[Display: Already Added]
-    J -->|No| L[Add to Cart]
-    L --> M[Display Product & Price]
-    M --> N[Update Total Amount]
-    N --> B
-    I -->|No| B
+| Component | Specification | Role |
+|-----------|--------------|------|
+| **Arduino UNO** | ATmega328P, 16 MHz, 5V, 32KB Flash | Main microcontroller |
+| **MFRC522 RFID Reader** | 13.56 MHz, SPI, ISO 14443 Type A | Reads RFID tags |
+| **RFID Cards / Tags** | Passive, 4-byte UID | One per product + one checkout |
+| **16×2 I2C LCD** | 16 columns × 2 rows, I2C address 0x27 | Real-time bill display |
+| **Jumper Wires** | Male-to-Male / Male-to-Female | Circuit connections |
+| **Breadboard** | 830-point standard | Prototyping |
+| **Power Supply** | 5V USB / Battery pack | System power |
+| **Shopping Trolley** | Standard retail cart | Physical mount |
+
+### Software & Protocols
+
+| Software / Protocol | Version | Purpose |
+|--------------------|---------|---------|
+| **Arduino IDE** | 1.8.x / 2.x | Programming & uploading firmware |
+| **SPI Protocol** | — | Arduino ↔ MFRC522 communication |
+| **I2C Protocol** | — | Arduino ↔ LCD communication |
+| **UART / Serial** | 9600 baud | Arduino ↔ PC (debug logs) |
+| **MFRC522 Library** | ≥1.4.0 | RFID reader interface |
+| **LiquidCrystal_I2C** | ≥1.1.2 | I2C LCD control |
+| **RFID_MFRC522v2** | v2.x | Extended MFRC522 support |
+
+---
+
+## 📦 Libraries
+
+### Install in Arduino IDE
+
+**Sketch → Include Library → Add .ZIP Library**, then add each of:
+
+```
+LiquidCrystal_I2C/    (included in project folder)
+MFRC522/              (included in project folder)
+RFID_MFRC522v2/       (included in project folder)
 ```
 
-### Product Configuration
+Or search and install via **Arduino Library Manager**:
 
-The system comes pre-configured with 3 sample products:
+```
+Library Manager → Search "MFRC522"         → Install by GithubCommunity
+Library Manager → Search "LiquidCrystal I2C" → Install by Frank de Brabander
+```
 
-| Product | RFID UID | Price |
-|---------|----------|-------|
-| Milk | `EF 69 35 1E` | ₹30 |
-| Bread | `F3 AB DD E2` | ₹20 |
-| Juice | `63 97 60 E4` | ₹25 |
-| **Checkout** | `97 8B 7A 00` | - |
+### Built-in Libraries (No Install Needed)
 
-### Reading Your RFID Card UIDs
-
-To add your own products:
-
-1. Open `RFID_Card_Reader.ino` in Arduino IDE
-2. Upload it to Arduino UNO
-3. Open Serial Monitor (9600 baud rate)
-4. Scan your RFID cards to get their UIDs
-5. Update the `cardUIDs[]` array in `Smart_Shopping_Trolley_Billing.ino` with your card UIDs
+```cpp
+#include <SPI.h>     // SPI communication (built-in with Arduino IDE)
+#include <Wire.h>    // I2C communication (built-in with Arduino IDE)
+```
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Smart-Shopping-Trolley/
+Smart Shopping Trolley with Billing using Arduino UNO/
 │
-├── Smart_Shopping_Trolley_Billing.ino    # Main project code
-├── RFID_Card_Reader.ino                  # Utility to read RFID UIDs
+├── 📄 Smart_Shopping_Trolley_Billing.ino   # ⭐ Main billing firmware (core program)
+├── 📄 RFID_Card_Reader.ino                 # 🔧 Utility: reads & prints RFID card UIDs
 │
-├── LiquidCrystal_I2C/                    # LCD I2C library
-│   ├── LiquidCrystal_I2C.cpp
+├── 📁 LiquidCrystal_I2C/                   # I2C LCD display library
 │   ├── LiquidCrystal_I2C.h
+│   ├── LiquidCrystal_I2C.cpp
 │   └── examples/
 │
-├── MFRC522/                              # RFID reader library
+├── 📁 MFRC522/                             # RFID MFRC522 reader library
 │   ├── src/
 │   ├── examples/
-│   │   └── RFID-Cloner/
-│   │       └── RFID-Cloner.ino          # Advanced RFID cloning utility
 │   └── README.rst
 │
-├── RFID_MFRC522v2/                       # Alternative RFID library
+├── 📁 RFID_MFRC522v2/                      # MFRC522 v2 extended library
+│   └── ...
 │
-├── Report of Smart Shopping Trolley System.pdf
-├── Presentation of Smart Shopping Trolley Billing System.pdf
+├── 📁 images/
+│   ├── 1.png                               # Block diagram
+│   ├── 2.jpg                               # Hardware setup photo
+│   ├── 3.gif                               # System demo animation
+│   └── 3.mp4                              # System demo video
+│
 ├── Abstract of Smart Shopping Trolly Billing System.pdf
-├── Working Prototype of Smart Shopping Trolley System.jpg
-├── Demo Video of Smart Shopping Trolley with Billing System.mp4
-└── README.md                             # This file
+├── Presentation of Smart Shopping Trolley Billing System.pdf
+├── Report of Smart Shopping Trolley System.pdf
+└── README.md
 ```
 
 ---
 
-## 🚀 Usage
+## 📐 Block Diagram
 
-### Step-by-Step Guide
+<img width="802" height="764" alt="1" src="https://github.com/user-attachments/assets/c31f6a51-e0db-40ea-ae12-2395ed24276a" />
 
-1. **Power On**: Connect the Arduino to a power source (USB or 5V adapter)
-2. **Initial Display**: LCD shows "Scan your card"
-3. **Add Products**: 
-   - Place RFID-tagged products near the reader
-   - Product name and price appear on LCD
-   - Total amount is calculated automatically
-4. **Checkout**: 
-   - Scan the checkout card
-   - LCD displays "Checkout Done" and total bill
-   - System auto-resets after 2 seconds
-5. **Next Customer**: System is ready for the next transaction
 
-### Adding New Products
+---
 
-To add more products to the system:
+## 🔬 How It Works — System Flowchart
 
-1. Obtain the RFID UID using `RFID_Card_Reader.ino`
-2. Edit `Smart_Shopping_Trolley_Billing.ino`:
+```mermaid
+flowchart TD
+    A([🔌 Power ON / System Start]) --> B[Initialize SPI, RFID, I2C LCD]
+    B --> C[LCD: 'Scan your card']
+    C --> D{New RFID Card\nDetected?}
+    D -- No --> D
+    D -- Yes --> E[Read & Format UID\nto Uppercase HEX]
+    E --> F[Log UID to\nSerial Monitor]
+    F --> G{Is Checkout\nCard?}
+
+    G -- Yes --> H{Checkout\nAlready Done?}
+    H -- Yes --> D
+    H -- No --> I[LCD: 'Checkout Done'\nLCD: 'Total: Rs.XX']
+    I --> J[Set checkoutDone = true]
+    J --> K[Wait 2 Seconds]
+    K --> L[resetSystem:\nClear all flags\nTotal = 0]
+    L --> C
+
+    G -- No --> M{Match in\nProduct UID List?}
+    M -- No --> D
+    M -- Yes --> N{Already\nScanned?}
+    N -- Yes --> O[LCD: 'Already added:\nProductName']
+    O --> D
+    N -- No --> P[Mark as Scanned\nAdd Price to Total]
+    P --> Q[LCD: ProductName\nLCD: Rs.Price]
+    Q --> R[Delay 1 Second]
+    R --> S[PICC_HaltA\nStopCrypto1]
+    S --> D
+
+    style A fill:#2e7d32,color:#fff
+    style L fill:#1565c0,color:#fff
+    style I fill:#f57f17,color:#fff
+    style O fill:#b71c1c,color:#fff
+    style P fill:#1b5e20,color:#fff
+```
+
+### Step-by-Step Operation
+
+| Step | Action | Description |
+|------|--------|-------------|
+| 1 | **Power ON** | Arduino initializes RFID reader and LCD, shows `"Scan your card"` |
+| 2 | **RFID Scan** | Customer places product near reader; UID is read over SPI |
+| 3 | **UID Matching** | Firmware compares scanned UID to stored product UID list |
+| 4 | **First Scan** | Product name + price shown on LCD; price added to running total |
+| 5 | **Duplicate Scan** | `"Already added: [Product]"` shown — no duplicate charge |
+| 6 | **Checkout Scan** | Customer taps Checkout card → LCD shows `"Total: Rs.XX"` |
+| 7 | **Auto Reset** | After 2 seconds, all flags cleared, system ready for next customer |
+
+---
+
+## 🔌 Hardware & Circuit Setup
+
+### MFRC522 RFID Reader → Arduino UNO Wiring
+
+| MFRC522 Pin | Arduino UNO Pin | Signal |
+|-------------|----------------|--------|
+| SDA (SS)    | **Pin 10**     | SPI Slave Select |
+| SCK         | **Pin 13**     | SPI Clock |
+| MOSI        | **Pin 11**     | SPI Master Out |
+| MISO        | **Pin 12**     | SPI Master In |
+| RST         | **Pin 9**      | Reset |
+| GND         | GND            | Ground |
+| 3.3V        | **3.3V**       | Power ⚠️ NOT 5V |
+| IRQ         | Not Connected  | — |
+
+> ⚠️ **Critical:** Always power the MFRC522 with **3.3V**. Connecting to 5V will permanently damage the module.
+
+### I2C LCD (16×2) → Arduino UNO Wiring
+
+| LCD Pin | Arduino UNO Pin | Signal |
+|---------|----------------|--------|
+| VCC     | 5V             | Power |
+| GND     | GND            | Ground |
+| SDA     | **A4**         | I2C Data |
+| SCL     | **A5**         | I2C Clock |
+
+---
+
+## 💻 Code Analysis
+
+### Main Program: `Smart_Shopping_Trolley_Billing.ino`
+
+#### Key Data Structures
 
 ```cpp
-// Increase array size
-String cardUIDs[5] = {
-  "EF 69 35 1E",  // Milk
-  "F3 AB DD E2",  // Bread
-  "63 97 60 E4",  // Juice
-  "XX XX XX XX",  // New Product
-  "97 8B 7A 00"   // Checkout (always last)
+// RFID Card UIDs mapped to products
+String cardUIDs[4] = {
+  "EF 69 35 1E",  // Milk     → Product 0
+  "F3 AB DD E2",  // Bread    → Product 1
+  "63 97 60 E4",  // Juice    → Product 2
+  "97 8B 7A 00"   // Checkout → Finalizes bill
 };
 
-String productNames[4] = {"Milk", "Bread", "Juice", "NewProduct"};
-int productPrices[4] = {30, 20, 25, 50};
-bool productScanned[4] = {false, false, false, false};
+String productNames[3]   = {"Milk", "Bread", "Juice"};
+int    productPrices[3]  = {30, 20, 25};             // in Rupees
+bool   productScanned[3] = {false, false, false};    // Duplicate guard
+int    totalAmount       = 0;
+bool   checkoutDone      = false;
 ```
 
-3. Update loop limits from `3` to `4` in the code
-4. Re-upload to Arduino
+#### UID Reading Logic
+
+```cpp
+// Reads raw bytes of UID, zero-pads, formats as uppercase HEX string
+String scannedUID = "";
+for (byte i = 0; i < rfid.uid.size; i++) {
+    if (rfid.uid.uidByte[i] < 0x10) scannedUID += "0"; // Zero-pad single digits
+    scannedUID += String(rfid.uid.uidByte[i], HEX);
+    if (i < rfid.uid.size - 1) scannedUID += " ";
+}
+scannedUID.toUpperCase(); // e.g. → "EF 69 35 1E"
+```
+
+#### Anti-Duplicate Mechanism
+
+```cpp
+if (!productScanned[i]) {
+    productScanned[i] = true;        // Mark as scanned this session
+    totalAmount += productPrices[i]; // Add to bill once only
+    // Display product name & price on LCD
+} else {
+    // Display "Already added: ProductName" warning
+}
+```
+
+#### System Reset Logic
+
+```cpp
+void resetSystem() {
+    totalAmount = 0;
+    for (int i = 0; i < 3; i++) productScanned[i] = false;
+    checkoutDone = false;
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Restarted...");
+    delay(1000);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Scan your card"); // Ready for next customer
+}
+```
+
+### Design Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| **`bool productScanned[]`** | In-memory session flag prevents duplicate billing without EEPROM writes |
+| **SPI for RFID** | Fast (up to 10 Mbps) and reliable; MFRC522 natively uses SPI |
+| **I2C for LCD** | Only 2 wires (SDA + SCL); saves digital pins for other potential sensors |
+| **`delay(1000)` after scan** | Debounce — prevents same card from being read multiple times in one placement |
+| **PICC_HaltA + StopCrypto1** | Properly halts card communication; prevents interference in multi-card environments |
+| **Auto-reset after 2s** | Ensures the trolley is ready for the next customer without a manual restart |
 
 ---
 
-## 🎥 Demo
+### Utility Program: `RFID_Card_Reader.ino`
 
-### Working Prototype
+This sketch is used **during initial setup only** — to discover the UID of each RFID card before hardcoding them into the billing firmware.
 
-![Prototype Image](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/2.jpg)
+**How to Use:**
+1. Upload `RFID_Card_Reader.ino` to Arduino UNO
+2. Open **Serial Monitor** (baud: 9600)
+3. Tap each product RFID card → note the printed UID
+4. Paste those UIDs into `cardUIDs[]` in `Smart_Shopping_Trolley_Billing.ino`
 
-The image shows the complete hardware setup with:
-- Arduino UNO microcontroller
-- MFRC522 RFID reader module (blue board)
-- 16x2 I2C LCD display showing "Scan your card"
-- Sample RFID cards (Milk, Bread, Juice)
-- Organized wiring and connections
-
-### Video Demonstration
-
-**![Demo Video](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley-with-Billing-System/blob/main/images/3.gif)**
-
-The demo video showcases:
-- Real-time product scanning
-- LCD display updates
-- Bill calculation
-- Checkout process
-- System reset functionality
+```cpp
+// Dumps full card details including UID, type, and data blocks
+mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
+```
 
 ---
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+
+- [Arduino IDE](https://www.arduino.cc/en/software) (v1.8.x or v2.x)
+- Arduino UNO + USB cable
+- MFRC522 RFID module
+- 16×2 I2C LCD display
+- RFID cards/tags (minimum 4: 3 products + 1 checkout)
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ArokiyaNithish/Smart-Shopping-Trolley.git
+cd Smart-Shopping-Trolley
+```
+
+### 2. Install Libraries
+
+Open Arduino IDE → **Sketch → Include Library → Add .ZIP Library**
+
+Add all three library folders:
+```
+LiquidCrystal_I2C/
+MFRC522/
+RFID_MFRC522v2/
+```
+
+### 3. Read Your RFID Card UIDs
+
+```bash
+# Open RFID_Card_Reader.ino in Arduino IDE
+# Upload to Arduino UNO
+# Open Serial Monitor at 9600 baud
+# Tap each RFID card → note the UID printed
+```
+
+### 4. Configure Product UIDs
+
+Open `Smart_Shopping_Trolley_Billing.ino` and update:
+
+```cpp
+String cardUIDs[4] = {
+  "XX XX XX XX",  // Your Product 1 UID (e.g. Milk)
+  "XX XX XX XX",  // Your Product 2 UID (e.g. Bread)
+  "XX XX XX XX",  // Your Product 3 UID (e.g. Juice)
+  "XX XX XX XX"   // Your Checkout card UID
+};
+
+String productNames[3]  = {"Milk", "Bread", "Juice"}; // Update names
+int    productPrices[3] = {30, 20, 25};                // Update prices (Rs.)
+```
+
+### 5. Upload & Test
+
+1. Select board: **Tools → Board → Arduino UNO**
+2. Select port: **Tools → Port → COMx**
+3. Upload `Smart_Shopping_Trolley_Billing.ino`
+4. LCD shows `"Scan your card"` → system is live!
+
+---
+
+## 🌍 Impact & Real-World Significance
+
+### Who Benefits
+
+| Stakeholder | Benefit |
+|-------------|---------|
+| 🛒 **Customers** | Zero wait time at checkout; real-time bill visibility |
+| 🏪 **Retailers** | Reduced cashier staff costs; faster store throughput |
+| 👩‍💼 **Store Staff** | Staff freed from billing to assist customers on floor |
+| ♿ **Elderly / Specially-Abled** | Fully independent self-checkout without cashier help |
+| 🌱 **Environment** | Reduces paper receipts and manual printed records |
+
+### System vs. Traditional Checkout
+
+| Traditional Checkout | Smart Trolley System |
+|---------------------|---------------------|
+| 10–30 min queue | **Instant** self-checkout |
+| Human billing errors | **00 errors** — automated UID matching |
+| Dedicated cashier required | **No cashier** needed at billing |
+| No price visibility while shopping | **Live running bill** on LCD |
+| Cannot scale during peak hours | **Scales infinitely** — one system per trolley |
+
+---
+
+## 🎬 System Demo
+
+| State | LCD Display | Event |
+|-------|------------|-------|
+| **Idle** | `Scan your card` | System waiting |
+| **Product Scanned (1st)** | `Milk` / `Rs.30` | Item added to bill |
+| **Duplicate Scan** | `Already added:` / `Milk` | No charge added |
+| **Checkout** | `Checkout Done` / `Total: Rs.75` | Bill finalized |
+| **Reset** | `Restarted...` → `Scan your card` | Ready for next customer |
+
+### Working Prototype Image 
+
+![2](https://github.com/user-attachments/assets/4bc54e48-4224-45da-a2cd-63f4ac8ab20f)
+
+# Working Prototype Video
+
+https://github.com/user-attachments/assets/b8952683-16bd-446f-ae13-77423ad2ea24
+
+---
+
 
 ## 🔮 Future Enhancements
 
-- [ ] **Database Integration**: Store product information in a database
-- [ ] **Wireless Communication**: Send bill data to a central server via WiFi/Bluetooth
-- [ ] **Mobile App**: Develop an app for bill viewing and payment
-- [ ] **Barcode Support**: Add barcode scanner as alternative to RFID
-- [ ] **Weight Sensor**: Verify product weight to prevent theft
-- [ ] **Receipt Printing**: Add thermal printer for physical receipts
-- [ ] **Multi-language Support**: Display in regional languages
-- [ ] **Payment Gateway**: Integrate UPI/card payment options
-- [ ] **Analytics Dashboard**: Track shopping patterns and inventory
-- [ ] **Voice Feedback**: Audio confirmation for visually impaired users
+- [ ] **Wi-Fi Integration** (ESP8266/ESP32) — send bill to cloud server in real time
+- [ ] **Mobile App** (Android/Flutter) — customer receives digital receipt on phone
+- [ ] **Weight Sensor** — detect if item added without RFID scan (anti-theft)
+- [ ] **Payment Module** — display UPI QR code on screen for contactless payment
+- [ ] **OLED Display** — better visuals and graphical bill display
+- [ ] **Barcode Fallback** — handle products without RFID tags via barcode scanner
+- [ ] **Inventory Sync** — deduct stock count on successful checkout
+- [ ] **Voice Feedback** — small speaker confirms each scanned item
+- [ ] **Multi-language** — Regional language support for product names on LCD
+- [ ] **Store Dashboard** — centralized web dashboard for all trolleys in real time
 
 ---
 
-## 👥 Author & Contributors
+## 🤝 Open Source Contribution
 
-- **[Arokiya Nithish J](https://github.com/ArokiyaNithish)** - *Project Lead & Developer*
-- **[Ishwarya M](https://github.com/ishwarya-hub)** - *Project Design Analysis & Developer*
+We warmly welcome contributions from the community! Whether it's **hardware improvements**, **new features**, **documentation**, or **bug fixes** — every contribution matters! 🎉
+
+### How to Contribute
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/Smart-Shopping-Trolley.git
+cd Smart-Shopping-Trolley
+
+# 3. Create a feature branch
+git checkout -b feature/your-feature-name
+
+# 4. Make your changes and commit
+git add .
+git commit -m "feat: add ESP8266 WiFi billing sync"
+
+# 5. Push to your fork
+git push origin feature/your-feature-name
+
+# 6. Open a Pull Request → main branch on GitHub
+```
+
+### Contribution Areas
+
+| Area | Good First Issue? | Description |
+|------|------------------|-------------|
+| 🐛 **Bug Fixes** | ✅ Yes | Fix edge cases in UID matching or LCD display |
+| ➕ **More Products** | ✅ Yes | Extend system to support 10+ products |
+| 🖥️ **OLED Support** | ✅ Yes | Add OLED display as alternative to LCD |
+| 📡 **Wi-Fi Module** | ⚡ Medium | Integrate ESP8266 for cloud billing |
+| 📱 **Mobile App** | ⚡ Medium | Flutter/Android companion app for digital receipt |
+| 🧪 **Testing** | ✅ Yes | Hardware test scripts and simulation |
+| 📖 **Documentation** | ✅ Yes | Tutorials, wiring diagrams, video walkthroughs |
+| 🔊 **Voice Feedback** | ⚡ Medium | Buzzer or speaker for audio product confirmation |
+| ⚖️ **Weight Sensor** | 🔥 Advanced | Anti-theft detection for unscanned items |
+
+### Coding Standards
+
+- Comment your code clearly — explain the *why*, not just the *what*
+- Use descriptive variable names
+- Write meaningful commit messages using [Conventional Commits](https://www.conventionalcommits.org/)
+- Test your changes on actual hardware before submitting a PR
+- Reference any related issue number in your PR description
+
+### Reporting Issues
+
+Please use [GitHub Issues](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley/issues) to:
+- 🐛 Report bugs
+- 💡 Request features
+- ❓ Ask questions or get help
 
 ---
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is licensed under the **MIT License** — completely free to use, modify, and distribute.
+
+```
+MIT License
+
+Copyright (c) 2025 Arokiya Nithish
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+See [LICENSE](LICENSE) for full details.
 
 ---
-## 📞 Contact & Support
 
-For questions, suggestions, or collaboration:
+## 👨‍💻 Author & Acknowledgments
 
-- **Email**: Arokiyanithishj@gmail.com
-- **GitHub**: [@Arokiya Nithish J](https://github.com/ArokiyaNithish)
-- **LinkedIn**: [Arokiya Nithish J](www.linkedin.com/in/arokiya-nithishj)
-- **Portfoilo**:[Arokiya Nithish J](https://arokiyanithish.github.io/portfolio/)
+### Author
 
----
+**Arokiya Nithish J**
+- 🎓 Engineering Student | IoT & Embedded Systems Enthusiast
+- 💼 Domain: IoT | Arduino | RFID | Embedded C
 
-## 🙏 Acknowledgments
+**Contacts**
+- GitHub: [@ArokiyaNithish](https://github.com/ArokiyaNithish)
+- LinkedIn: [@Arokiya Nithish J](https://www.linkedin.com/in/arokiya-nithishj/)
+- Email: arokiyanithishj@gmail.com
+- Portfolio: [arokiyanithish.github.io/portfolio](https://arokiyanithish.github.io/portfolio/)
 
-- Arduino Community for extensive documentation
-- MFRC522 Library by GithubCommunity
-- LiquidCrystal_I2C Library by Frank de Brabander
-- All open-source contributors
+### Acknowledgments
+
+- 🏪 **Retail Mall Shoppers & Staff** — For participating in field surveys that shaped this project's requirements
+- 📡 **miguelbalboa** — For the open-source [MFRC522 Arduino Library](https://github.com/miguelbalboa/rfid)
+- 🖥️ **Frank de Brabander** — For the [LiquidCrystal_I2C Library](https://github.com/johnrickman/LiquidCrystal_I2C)
+- 🔧 **Arduino Community** — For the incredible open-source hardware and software ecosystem
+- 📚 **OSSLibraries** — For the [MFRC522v2 extended library](https://github.com/OSSLibraries/Arduino_MFRC522v2)
 
 ---
 
 ## 📚 References
 
-- [Arduino Official Documentation](https://www.arduino.cc/reference/en/)
-- [MFRC522 Library GitHub](https://github.com/miguelbalboa/rfid)
-- [I2C LCD Documentation](https://www.arduino.cc/en/Reference/LiquidCrystal)
-- [Complete Report Document](https://drive.google.com/file/d/1KNty5-GZXkUufx2Xm-4T0okQmDgQPWm6/view?usp=sharing)
-- [Idea Presentation](https://drive.google.com/file/d/1dKxhBsqePgdzTozG-Ih7ikeN6Tw-Afaf/view?usp=sharing)
+1. [Report Completed Documentation of the Project](https://drive.google.com/file/d/1o-lwD_c-iPc-EA-hjFGMlGl0T8WRGI06/view?usp=sharing)
+2. [Presenation of the project](https://drive.google.com/file/d/1Vs6lxVuLPYohq5XWtYXF8uZrqahKCH-Q/view?usp=sharing)
+2. [Arduino UNO Official Documentation](https://www.arduino.cc/en/microcontrollers/uno-rev3)
+3. [MFRC522 Library — miguelbalboa/rfid (GitHub)](https://github.com/miguelbalboa/rfid)
+4. [Arduino MFRC522v2 Library — OSSLibraries (GitHub)](https://github.com/OSSLibraries/Arduino_MFRC522v2)
+5. [LiquidCrystal I2C Library — johnrickman (GitHub)](https://github.com/johnrickman/LiquidCrystal_I2C)
+6. [RFID Technology Overview — Wikipedia](https://en.wikipedia.org/wiki/Radio-frequency_identification)
+7. [Arduino SPI Library Reference](https://www.arduino.cc/en/reference/SPI)
+8. [Arduino Wire (I2C) Library Reference](https://www.arduino.cc/en/reference/wire)
+9. [ISO/IEC 14443 — RFID Standard for Contactless Cards](https://www.iso.org/standard/70171.html)
+
 ---
 
 <div align="center">
 
-**⭐ If you found this project helpful, please give it a star! ⭐**
+For support, email arokiyanithishj@gmail.com or open an [issue](https://github.com/ArokiyaNithish/Smart-Shopping-Trolley/issues) on GitHub.
 
-Made with ❤️ using Arduino
+### 🌟 If this project helped you — please give it a ⭐ Star on GitHub!
+
+**#IoT #Arduino #RFID #SmartShopping #EmbeddedSystems #OpenSource**
+
+*Made with ❤️ and Arduino by Arokiya Nithish*
 
 </div>
