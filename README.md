@@ -649,4 +649,6 @@ For support, email arokiyanithishj@gmail.com or open an [issue](https://github.c
 
 *Made with ❤️ and Arduino by Arokiya Nithish*
 
+*© 2026 — Arokiya Nithish J*
+
 </div>
